@@ -28,7 +28,7 @@
     background-repeat: no-repeat;
     
     /* Forza l'altezza della sezione a occupare esattamente il 100% dell'altezza dello schermo visibile (Viewport Height) */
-    height: 100vh;
+    height: 600px;
     
     /* Forza la larghezza a occupare il 100% dello schermo dello spettatore */
     width: 100%;
