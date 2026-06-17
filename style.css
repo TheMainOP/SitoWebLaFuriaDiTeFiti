@@ -18,16 +18,16 @@
     /* Sovrappone un velo scuro trasparente (linear-gradient) sopra l'immagine (sfondo.jpg) per far leggere meglio il testo bianco */
     background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('sfondo.jpg');
     
-    background-size: contain; /* Mostra l'immagine intera senza tagliarla */
+    background-size: 100% auto; /* Mostra l'immagine intera riempiendo la pagina */
     
     background-position: top center; /* Allinea l'immagine partendo dall'alto */
     
     /* Impedisce all'immagine di ripetersi come una scacchiera se lo schermo è troppo grande */
     background-repeat: no-repeat;
     
-    /* Forza l'altezza della sezione a occupare esattamente il 100% dell'altezza dello schermo visibile (Viewport Height) */
-    height: 600px;
-    
+    /* Forza l'altezza della sezione a occupare esattamente il 100% della pagina */
+    height: auto;
+    aspect-ratio: 16 / 9;
     /* Forza la larghezza a occupare il 100% dello schermo dello spettatore */
     width: 100%;
     
