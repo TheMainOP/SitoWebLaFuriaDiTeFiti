@@ -14,69 +14,73 @@
 }
 
 /* Gestisce la sezione principale (collegata a class="hero-section") */
+/* ==========================================================================
+   MODIFICATA: SEZIONE HERO (Il contenitore principale)
+   ========================================================================== */
 .hero-section {
     /* Forza la larghezza a occupare il 100% dello schermo dello spettatore */
     width: 100%;
     
-    /* [MODIFICATO] Sostituito aspect-ratio con min-height: ora occupa ALMENO il 100% dell'altezza dello schermo dello spettatore, evitando che su mobile si rimpicciolisca troppo */
+    /* Occupa l'intera altezza dello schermo del browser */
     min-height: 100vh; 
     
     /* Imposta il colore di base di tutti i testi interni su bianco */
     color: white;
     
-    /* Rende questa sezione un punto di riferimento per posizionare altri elementi (es. la barra in alto e lo sfondo animato) */
+    /* Rende questa sezione il punto di riferimento per lo sfondo animato */
     position: relative;
     
-    /* Attiva la tecnologia 'Flexbox', uno strumento potente per allineare gli elementi interni */
+    /* Attiva Flexbox per gestire l'allineamento dei testi */
     display: flex;
     
-    /* Grazie a Flexbox, allinea perfettamente al centro verticale tutti i contenuti interni */
+    /* Allinea verticalmente al centro tutti i contenuti interni */
     align-items: center; 
     
-    /* Aggiunge uno spazio interno vuoto sul lato sinistro pari al 5% della larghezza della pagina per staccare il testo dal bordo */
+    /* Spazio vuoto a sinistra e a destra per staccare i testi dal bordo dello schermo */
     padding-left: 5%; 
-    
-    /* [NUOVO] Aggiunge protezione a destra per evitare che il testo tocchi il bordo su schermi intermedi */
     padding-right: 5%; 
 
-    /* [NUOVO] Nasconde tutto ciò che esce dai bordi della sezione. 
-       È fondamentale per l'animazione di zoom, altrimenti l'immagine ingrandita creerebbe delle fastidiose barre di scorrimento nel sito */
+    /* Nasconde lo sfondo quando è ingrandito all'avvio, evitando la comparsa di barre di scorrimento */
     overflow: hidden; 
+
+    /* [NUOVO] Colore di sfondo scuro (preso direttamente dal bordo della tua immagine).
+       Se l'utente ha uno schermo extra-largo, le bande vuote ai lati saranno di questo colore,
+       fondendosi in modo invisibile e perfetto con la cornice del disegno. */
+    background-color: #0b0604; 
 }
 
 /* ==========================================================================
-   [NUOVO DI ZECCA] GESTIONE DELLO SFONDO VIVIDO E ANIMATO
-   Creiamo un elemento virtuale (::before) dedicato SOLO all'immagine. 
-   In questo modo possiamo zoomare lo sfondo all'avvio SENZA muovere i testi della pagina!
+   MODIFICATA: GESTIONE DELLO SFONDO ANIMATO
    ========================================================================== */
 .hero-section::before {
-    /* Genera l'elemento vuoto che conterrà lo sfondo */
+    /* Genera l'elemento virtuale per lo sfondo */
     content: "";
     
-    /* Incolla lo sfondo ai quattro angoli della hero-section per coprirla totalmente */
+    /* Incolla lo sfondo ai quattro angoli della sezione per estenderlo al massimo */
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     
-    /* [MODIFICATO] Rimosso il linear-gradient nero. Ora l'immagine 'sfondo.jpg' si mostra pura e vivida come l'originale */
+    /* Carica la tua immagine vivida senza filtri scuri */
     background-image: url('sfondo.jpg');
     
-    /* [MODIFICATO] Cambiato in 'cover' per fare in modo che l'immagine si adatti sempre e copra tutto lo schermo in automatico */
-    background-size: cover;
+    /* [MODIFICATO] Cambiato da 'cover' a 'contain'. 
+       Questa è la magia: costringe il browser a mostrare SEMPRE il 100% del disegno,
+       cornice e scritte comprese, senza mai tagliare nemmeno un millimetro. */
+    background-size: contain;
     
-    /* Allinea l'immagine perfettamente al centro (così lo zoom partirà dal mezzo esatto) */
+    /* Mantiene l'immagine perfettamente centrata nello schermo (lo zoom partirà da qui) */
     background-position: center center;
     
     /* Impedisce all'immagine di ripetersi */
     background-repeat: no-repeat;
     
-    /* Spinge questo elemento di sfondo DIETRO ai testi e alla barra superiore */
+    /* Spinge lo sfondo dietro ai testi */
     z-index: -1; 
     
-    /* Collega l'animazione d'apertura definita in fondo al file.
-       Durerà 3 secondi, rallenterà fluidamente verso la fine (ease-out) e manterrà la posizione finale senza resettarsi (forwards) */
+    /* Avvia l'animazione di zoom-out (mantiene i parametri fluidi di prima) */
     animation: aperturaZoomOut 3s ease-out forwards;
 }
 
