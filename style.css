@@ -23,36 +23,50 @@
 /* ==========================================================================
    GESTIONE DELLO SFONDO ANIMATO (Immagine nella stessa cartella del CSS)
    ========================================================================== */
-.hero-section::before {
-    /* Genera l'elemento virtuale vuoto per contenere lo sfondo */
-    content: "";
-    
-    /* Blocca lo sfondo ai quattro angoli della sezione per coprirla tutta */
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    
-    /* [AGGIORNATO] Cerca il file 'sfondo.jpg' nella stessa cartella del file CSS.
-       Attenzione: se su GitHub il file è scritto con l'estensione maiuscola (es. sfondo.JPG), 
-       dovrai scriverlo esattamente così anche qui! */
-    background-image: url('sfondo.jpg');
-    
-    /* Costringe il browser a mostrare l'immagine completa al 100% senza tagliarla */
-    background-size: contain;
-    
-    /* Centra perfettamente l'immagine nello schermo */
-    background-position: center center;
-    
-    /* Impedisce all'immagine di ripetersi come una scacchiera */
+/* Gestisce la sezione principale con lo sfondo (collegata a class="hero-section") */
+.hero-section {
+    /* Velo scuro ridotto dal 40% al 15% per non spegnere i colori dell'immagine sottostante */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15)), url('sfondo.jpg');
+
+    background-size: 100% auto; /* Mostra l'immagine intera riempiendo la pagina */
+
+    background-position: top center; /* Allinea l'immagine partendo dall'alto */
+
+    /* Impedisce all'immagine di ripetersi se lo schermo è troppo grande */
     background-repeat: no-repeat;
-    
-    /* Spinge lo sfondo dietro ai testi per non coprirli */
-    z-index: -1; 
-    
-    /* Fa partire l'animazione di zoom-out della durata di 3 secondi */
-    animation: aperturaZoomOut 3s ease-out forwards;
+
+    /* Aumenta saturazione (colori più carichi) e contrasto per un effetto vivido e brillante */
+    filter: saturate(1.4) contrast(1.1);
+
+    /* Mantiene il rapporto 16:9 dell'altezza */
+    height: auto;
+    aspect-ratio: 16 / 9;
+
+    /* Larghezza piena */
+    width: 100%;
+
+    /* Colore base dei testi interni su bianco */
+    color: white;
+
+    /* Punto di riferimento per posizionare gli elementi interni */
+    position: relative;
+
+    /* Attiva Flexbox per allineare i contenuti */
+    display: flex;
+
+    /* Centra verticalmente i contenuti */
+    align-items: center;
+
+    /* Stacca il testo dal bordo sinistro del 5% */
+    padding-left: 5%;
+
+    /* MASCHERA: definisce dove l'immagine è visibile e dove sfuma verso il trasparente.
+       Centro della sfumatura posizionato a metà larghezza (50%) e in alto (0%),
+       forma a ellisse: il pieno parte dal centro-alto e si dissolve verso bordi e basso */
+    mask-image: radial-gradient(ellipse 90% 110% at 50% 0%, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 100%);
+
+    /* Stessa maschera con prefisso -webkit- per la compatibilità con Chrome, Safari ed Edge */
+    -webkit-mask-image: radial-gradient(ellipse 90% 110% at 50% 0%, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 100%);
 }
 
 /* ==========================================================================
