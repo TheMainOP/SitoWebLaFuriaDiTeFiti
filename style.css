@@ -17,70 +17,77 @@
 /* ==========================================================================
    MODIFICATA: SEZIONE HERO (Il contenitore principale)
    ========================================================================== */
+/* ==========================================================================
+   GESTIONE HERO SECTION (Il contenitore principale dei testi)
+   ========================================================================== */
 .hero-section {
-    /* Forza la larghezza a occupare il 100% dello schermo dello spettatore */
+    /* Forza la sezione a occupare tutta la larghezza dello schermo */
     width: 100%;
     
-    /* Occupa l'intera altezza dello schermo del browser */
+    /* Forza la sezione a occupare l'intera altezza del display del browser */
     min-height: 100vh; 
     
-    /* Imposta il colore di base di tutti i testi interni su bianco */
+    /* Imposta il colore bianco come base per tutti i testi interni */
     color: white;
     
-    /* Rende questa sezione il punto di riferimento per lo sfondo animato */
+    /* Rende questo blocco il punto di ancoraggio per posizionare lo sfondo animato */
     position: relative;
     
-    /* Attiva Flexbox per gestire l'allineamento dei testi */
+    /* Attiva Flexbox per allineare i testi e i bottoni al suo interno */
     display: flex;
     
-    /* Allinea verticalmente al centro tutti i contenuti interni */
+    /* Centra verticalmente il blocco dei testi rispetto all'altezza dello schermo */
     align-items: center; 
     
-    /* Spazio vuoto a sinistra e a destra per staccare i testi dal bordo dello schermo */
+    /* Spazio di sicurezza a sinistra per non far appiccicare i testi al bordo dello schermo */
     padding-left: 5%; 
+    
+    /* Spazio di sicurezza a destra per evitare collisioni su schermi intermedi */
     padding-right: 5%; 
 
-    /* Nasconde lo sfondo quando è ingrandito all'avvio, evitando la comparsa di barre di scorrimento */
+    /* Taglia e nasconde l'immagine quando si ingrandisce durante lo zoom iniziale,
+       impedendo la comparsa di brutte barre di scorrimento laterali o verticali */
     overflow: hidden; 
 
-    /* [NUOVO] Colore di sfondo scuro (preso direttamente dal bordo della tua immagine).
-       Se l'utente ha uno schermo extra-largo, le bande vuote ai lati saranno di questo colore,
-       fondendosi in modo invisibile e perfetto con la cornice del disegno. */
+    /* Colore di sicurezza marrone scuro/nero preso dal bordo della tua immagine.
+       Se la foto non si carica o lo schermo è extralargo, riempie il vuoto con questo colore */
     background-color: #0b0604; 
 }
 
 /* ==========================================================================
-   MODIFICATA: GESTIONE DELLO SFONDO ANIMATO
+   GESTIONE DELLO SFONDO ANIMATO CON COPERTURA COMPLETA (Contain)
    ========================================================================== */
 .hero-section::before {
-    /* Genera l'elemento virtuale per lo sfondo */
+    /* Genera l'elemento virtuale vuoto che conterrà l'immagine di sfondo */
     content: "";
     
-    /* Incolla lo sfondo ai quattro angoli della sezione per estenderlo al massimo */
+    /* Blocca lo sfondo ai quattro angoli della sezione principale per coprirla tutta */
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     
-    /* Carica la tua immagine vivida senza filtri scuri */
-    background-image: url('sfondo.jpg');
+    /* [ATTENZIONE] Qui devi inserire il nome ESATTO del file presente su GitHub.
+       Se su GitHub si chiama 'eventi_JUMP.jpg', usa questo. Se si chiama 'sfondo.jpg', scrivi 'sfondo.jpg'.
+       Ricorda che le maiuscole e minuscole devono coincidere al 100%. */
+    background-image: url('eventi_JUMP.jpg');
     
-    /* [MODIFICATO] Cambiato da 'cover' a 'contain'. 
-       Questa è la magia: costringe il browser a mostrare SEMPRE il 100% del disegno,
-       cornice e scritte comprese, senza mai tagliare nemmeno un millimetro. */
+    /* Costringe il browser a mostrare SEMPRE l'immagine intera senza tagliare la cornice
+       o la pergamena in basso, adattandola proporzionalmente allo schermo dello spettatore */
     background-size: contain;
     
-    /* Mantiene l'immagine perfettamente centrata nello schermo (lo zoom partirà da qui) */
+    /* Mantiene l'immagine perfettamente immobile al centro (lo zoom partirà ed finirà qui) */
     background-position: center center;
     
-    /* Impedisce all'immagine di ripetersi */
+    /* Impedisce all'immagine di sdoppiarsi o ripetersi come una scacchiera */
     background-repeat: no-repeat;
     
-    /* Spinge lo sfondo dietro ai testi */
+    /* Spinge lo sfondo su un livello inferiore (-1) rispetto ai testi, così non copre le scritte */
     z-index: -1; 
     
-    /* Avvia l'animazione di zoom-out (mantiene i parametri fluidi di prima) */
+    /* Attiva l'animazione d'apertura (Zoom-out) definita nei keyframes in fondo al tuo file.
+       Dura 3 secondi, rallenta dolcemente alla fine (ease-out) e si ferma sul fotogramma finale (forwards) */
     animation: aperturaZoomOut 3s ease-out forwards;
 }
 
