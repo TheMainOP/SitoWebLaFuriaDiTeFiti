@@ -20,38 +20,39 @@
 /* ==========================================================================
    GESTIONE HERO SECTION (Il contenitore principale dei testi)
    ========================================================================== */
-.hero-section {
-    /* Forza la sezione a occupare tutta la larghezza dello schermo */
+/* ==========================================================================
+   GESTIONE DELLO SFONDO ANIMATO (Immagine nella stessa cartella del CSS)
+   ========================================================================== */
+.hero-section::before {
+    /* Genera l'elemento virtuale vuoto per contenere lo sfondo */
+    content: "";
+    
+    /* Blocca lo sfondo ai quattro angoli della sezione per coprirla tutta */
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
+    height: 100%;
     
-    /* Forza la sezione a occupare l'intera altezza del display del browser */
-    min-height: 100vh; 
+    /* [AGGIORNATO] Cerca il file 'sfondo.jpg' nella stessa cartella del file CSS.
+       Attenzione: se su GitHub il file è scritto con l'estensione maiuscola (es. sfondo.JPG), 
+       dovrai scriverlo esattamente così anche qui! */
+    background-image: url('sfondo.jpg');
     
-    /* Imposta il colore bianco come base per tutti i testi interni */
-    color: white;
+    /* Costringe il browser a mostrare l'immagine completa al 100% senza tagliarla */
+    background-size: contain;
     
-    /* Rende questo blocco il punto di ancoraggio per posizionare lo sfondo animato */
-    position: relative;
+    /* Centra perfettamente l'immagine nello schermo */
+    background-position: center center;
     
-    /* Attiva Flexbox per allineare i testi e i bottoni al suo interno */
-    display: flex;
+    /* Impedisce all'immagine di ripetersi come una scacchiera */
+    background-repeat: no-repeat;
     
-    /* Centra verticalmente il blocco dei testi rispetto all'altezza dello schermo */
-    align-items: center; 
+    /* Spinge lo sfondo dietro ai testi per non coprirli */
+    z-index: -1; 
     
-    /* Spazio di sicurezza a sinistra per non far appiccicare i testi al bordo dello schermo */
-    padding-left: 5%; 
-    
-    /* Spazio di sicurezza a destra per evitare collisioni su schermi intermedi */
-    padding-right: 5%; 
-
-    /* Taglia e nasconde l'immagine quando si ingrandisce durante lo zoom iniziale,
-       impedendo la comparsa di brutte barre di scorrimento laterali o verticali */
-    overflow: hidden; 
-
-    /* Colore di sicurezza marrone scuro/nero preso dal bordo della tua immagine.
-       Se la foto non si carica o lo schermo è extralargo, riempie il vuoto con questo colore */
-    background-color: #0b0604; 
+    /* Fa partire l'animazione di zoom-out della durata di 3 secondi */
+    animation: aperturaZoomOut 3s ease-out forwards;
 }
 
 /* ==========================================================================
