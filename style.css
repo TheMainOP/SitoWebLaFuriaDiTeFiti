@@ -18,11 +18,9 @@
     /* Sovrappone un velo scuro trasparente (linear-gradient) sopra l'immagine (sfondo.jpg) per far leggere meglio il testo bianco */
     background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('sfondo.jpg');
     
-    /* Ridimensiona l'immagine in modo che copra interamente l'area senza deformarsi o lasciare spazi vuoti */
-    background-size: cover;
+    background-size: contain; /* Mostra l'immagine intera senza tagliarla */
     
-    /* Centra l'immagine sia in orizzontale che in verticale */
-    background-position: center;
+    background-position: top center; /* Allinea l'immagine partendo dall'alto */
     
     /* Impedisce all'immagine di ripetersi come una scacchiera se lo schermo è troppo grande */
     background-repeat: no-repeat;
