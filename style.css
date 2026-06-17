@@ -71,7 +71,7 @@
     /* [ATTENZIONE] Qui devi inserire il nome ESATTO del file presente su GitHub.
        Se su GitHub si chiama 'eventi_JUMP.jpg', usa questo. Se si chiama 'sfondo.jpg', scrivi 'sfondo.jpg'.
        Ricorda che le maiuscole e minuscole devono coincidere al 100%. */
-    background-image: url('sfondo.JPG');
+    background-image: url('sfondo.jpg');
     
     /* Costringe il browser a mostrare SEMPRE l'immagine intera senza tagliare la cornice
        o la pergamena in basso, adattandola proporzionalmente allo schermo dello spettatore */
