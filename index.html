@@ -31,7 +31,11 @@
     <!-- Crea la sezione principale superiore della pagina (chiamata 'hero'), usata qui per contenere lo sfondo a schermo intero -->
     <header class="hero-section">
         <!-- Video background: usa il link OneDrive invece del file locale -->
-        <video id="hero-video" class="hero-video" src="https://1drv.ms/v/c/b1dc5d1d0a2cdea9/IQSEwO6YONPqQae4HFGWzC0WAbPtF4-5iQgwyfRz2RCC5BM?width=1920&height=1080" autoplay muted loop playsinline></video>
+        <video id="hero-video" class="hero-video" autoplay muted loop playsinline preload="auto">
+            <source src="https://1drv.ms/v/c/b1dc5d1d0a2cdea9/IQSEwO6YONPqQae4HFGWzC0WAbPtF4-5iQgwyfRz2RCC5BM?width=1920&height=1080&download=1" type="video/mp4">
+            <source src="Timeline1.mp4" type="video/mp4">
+            Il tuo browser non supporta il video.
+        </video>
  
         <!-- Commento che indica l'inizio della barra in alto -->
         <!-- Barra superiore opzionale (Logo e Bottone Discord) -->
@@ -186,7 +190,7 @@
                 <p>Sì. Puntiamo su rispetto, collaborazione, comunicazione chiara e ambiente pulito. Lo staff modera per mantenere la qualità della community.</p>
             </div>
         </div>
-        <div class="faq-item" data-fullscreen-gif="MEGSOT.gif">
+        <div class="faq-item" data-fullscreen-gif="MEGSOT.GIF">
             <button class="faq-toggle" type="button">
                 <span>Qual è la vostra politica contro i giocatori molesti?</span>
                 <span class="faq-icon">+</span>
